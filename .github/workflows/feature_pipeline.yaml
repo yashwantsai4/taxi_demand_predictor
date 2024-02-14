@@ -1,0 +1,32 @@
+name: feature-pipeline
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: 3.9
+  CONDA_ENV_NAME: conda_environment
+
+jobs:
+  feature_pipeline:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Miniconda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        python-version: ${{ env.PYTHON_VERSION }}
+        environment-file: environment.yml
+        activate-environment: ${{ env.CONDA_ENV_NAME }}
+        miniconda-version: "latest"
+
+    - name: Execute Python Workflows from Bash Script
+      env:
+        HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+      run: |
+        conda activate ${{ env.CONDA_ENV_NAME }}
+        jupyter nbconvert --to notebook --execute notebooks/12_feature_pipeline.ipynb

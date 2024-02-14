@@ -7,6 +7,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+jupyter = "^1.0.0"
+requests = "^2.31.0"
+pandas = "^2.2.0"
+pyarrow = "^15.0.0"
+tqdm = "^4.66.1"
+plotly = "^5.18.0"
+scikit-learn = "^1.4.0"
+xgboost = "^2.0.3"
 
 
 [build-system]

@@ -16,8 +16,7 @@ scikit-learn = "^1.4.0"
 xgboost = "^2.0.3"
 
 [tool.poetry.group.dev.dependencies]
-jupyter = "^1.0.0"
-
+jupyter = { version = "^1.0.0", python = ">=3.10" } # Conditional use, adjust as needed
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

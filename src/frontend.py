@@ -33,7 +33,7 @@ st.header(f'{current_date} UTC')
 
 progress_bar = st.sidebar.header('⚙️ Working Progress')
 progress_bar = st.sidebar.progress(0)
-N_STEPS = 6
+N_STEPS = 5
 
 
 def load_shape_data_file() -> gpd.geodataframe.GeoDataFrame:
